@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나에게 맞는 학과 유형 테스트</title>
+    
+    <!-- ⚠️ [필수] 구글 애널리틱스(GA4) 추적 코드 -->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFLDLQZ9KN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; text-align: center; }
+        .card { background: white; border-radius: 16px; padding: 30px 20px; max-width: 400px; margin: 40px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { font-size: 20px; color: #333; margin-bottom: 20px; }
+        .btn { background-color: #4A90E2; color: white; border: none; padding: 15px 20px; width: 100%; border-radius: 10px; font-size: 16px; font-weight: bold; margin: 10px 0; cursor: pointer; transition: 0.2s; }
+        .btn:active { background-color: #357ABD; transform: scale(0.98); }
+        #result { display: none; margin-top: 20px; font-size: 18px; font-weight: bold; color: #2C3E50; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🔍 나에게 딱 맞는 학과 추천 테스트</h1>
+        <p>Q. 나는 문제가 생겼을 때 어떻게 해결하는가?</p>
+        
+        <button class="btn" onclick="showResult('논리적 분석형')">A. 데이터를 분석하고 논리적으로 해결한다</button>
+        <button class="btn" onclick="showResult('창의적 아이디어형')">B. 직관과 창의적인 아이디어로 해결한다</button>
+        
+        <div id="result">
+            <p>🎉 당신의 추천 유형은:<br><span id="type-text" style="color:#4A90E2; font-size:24px;"></span></p>
+            <button class="btn" style="background-color:#27AE60;" onclick="location.href='https://www.yju.ac.kr'">학과 입시 정보 더보기</button>
+        </div>
+    </div>
+
+    <script>
+        function showResult(type) {
+            document.getElementById('type-text').innerText = type;
+            document.getElementById('result').style.display = 'block';
+            
+            // GA4에 상호작용(버튼 클릭) 이벤트 전송
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_test_option', { 'selected_type': type });
+            }
+        }
+    </script>
+</body>
+</html>
